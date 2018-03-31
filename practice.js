@@ -113,7 +113,16 @@ contains(names, "Colt", function(result) {
 */
 
 //Code Here
-function uniq(arr, cb) {}
+function uniq(arr, cb) {
+  const newArr = [];
+  for (i = 0; i < arr.length; i++) {
+    if (newArr.indexOf(arr[i]) === -1) {
+      newArr.push(arr[i]);
+    }
+  }
+
+  return cb(newArr);
+}
 
 // Do not edit the code below.
 uniq(names, function(uniqArr) {
@@ -134,7 +143,7 @@ uniq(names, function(uniqArr) {
 //Code Here
 function each(arr, cb) {
   for (i = 0; i < arr.length; i++) {
-    return cb(arr[i], i);
+    cb(arr[i], i);
   }
 }
 
@@ -153,9 +162,11 @@ each(names, function(item, indice) {
 */
 
 // Code here
-function getUserById(arr, id, cb) {
+function getUserById(arr, userid, cb) {
   for (i = 0; i < arr.length; i++) {
-    console.log(arr[i][id]);
+    if (arr[i].id === userid) {
+      return cb(arr[i]);
+    }
   }
 }
 
